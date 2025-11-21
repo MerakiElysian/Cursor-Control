@@ -1,5 +1,13 @@
 # Hand Cursor Control (Work in progress...)
 
+<p align="center">
+  <img src="logo.png" width="200">
+  <br>
+  <em></em>
+</p>
+
+
+
 > Control your mouse cursor using hand gestures and movements (computer vision + ML).
 
 ## Project Overview
