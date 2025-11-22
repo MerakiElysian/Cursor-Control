@@ -68,7 +68,7 @@ hand-cursor-control/
 
 ```bash
 git clone https://github.com/MerakiElysian/Cursor-Control.git
-cd hand-cursor-control
+cd Cursor-Control
 ```
 
 2. Create and activate a virtual environment (recommended):
