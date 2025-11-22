@@ -1,7 +1,7 @@
 # main.py
 from Capture import Capture
 from Detector import Detector
-import cv2
+import cv2 as cv
 
 def main():
     cam = Capture(cam_index=0, mirror=True, rgb=True)
@@ -23,9 +23,9 @@ def main():
                 detect.draw(frame_bgr, hand_landmarks)
 
         # Show output
-        cv2.imshow("Hand Detection", frame_bgr)
+        cv.imshow("Hand Detection", frame_bgr)
 
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+        if cv.waitKey(1) & 0xFF == ord('q'):
             break
 
     cam.release()
