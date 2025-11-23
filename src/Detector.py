@@ -27,15 +27,6 @@ class Detector:
         results = self.hands.process(rgb_frame)
         return results
 
-    def draw(self, frame_bgr, hand_landmarks):
-        """
-        Draws landmarks on BGR frame
-        """
-        self.mp_draw.draw_landmarks(
-            frame_bgr,
-            hand_landmarks,
-            self.mp_hands.HAND_CONNECTIONS
-        )
 
     def close(self):
         self.hands.close()
