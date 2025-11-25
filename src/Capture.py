@@ -37,6 +37,43 @@ class Capture:
 
         return frame, frame_rgb, True
 
+    def get_frame_size(self) -> Tuple[int, int]:
+        """
+        Return current frame width and height in pixels as (width, height).
+        This uses the camera properties if available, otherwise falls back to reading a frame.
+        """
+        # Try reading properties first
+        fw = int(self.cam.get(cv.CAP_PROP_FRAME_WIDTH))
+        fh = int(self.cam.get(cv.CAP_PROP_FRAME_HEIGHT))
+        if fw > 0 and fh > 0:
+            return fw, fh
+
+        # Fallback: capture one frame and check shape
+        ret, frame = self.cam.read()
+        if ret and frame is not None:
+            h, w = frame.shape[:2]
+            return w, h
+
+        # Last resort
+        return 640, 480
+
+    def norm_to_pixel(self, nx: float, ny: float) -> Tuple[int, int]:
+        """
+        Convert normalized coords (0..1) to pixels using current frame size.
+        """
+        w, h = self.get_frame_size()
+        x = int(nx * w)
+        y = int(ny * h)
+        return x, y
+
+    def pixel_to_norm(self, x: int, y: int) -> Tuple[float, float]:
+        """
+        Convert pixel coords to normalized coords (0..1).
+        """
+        w, h = self.get_frame_size()
+        return x / w, y / h
+
+
     def release(self):
         """
         Releases the camera.

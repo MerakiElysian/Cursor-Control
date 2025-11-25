@@ -22,6 +22,9 @@ def main():
         # Draw landmarks (if detected)
         if results.multi_hand_landmarks:
             for hand_landmarks in results.multi_hand_landmarks:
+                # To print the positional co-ordinates for points on the hands.
+                for id, lm in enumerate(hand_landmarks.landmark):
+                    print(id,lm) # Print the x,y coordinates of landmarks =
                 mapper.draw(frame_bgr, hand_landmarks)
 
         # Show output

@@ -69,3 +69,11 @@ class Mapper:
         if self.show_fps:
             self._update_fps()
             self._draw_fps(frame_bgr)
+
+            
+    # convenience wrappers
+    def draw_circle(self, frame_bgr, center: Tuple[float, float], radius: int = 10, **kwargs):
+        self.draw_shape(frame_bgr, 'circle', center, size=radius, **kwargs)
+
+    def draw_square(self, frame_bgr, center: Tuple[float, float], half_side: int = 12, **kwargs):
+        self.draw_shape(frame_bgr, 'square', center, size=half_side, **kwargs)
